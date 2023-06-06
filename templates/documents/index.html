@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document List</title>
+</head>
+<body>
+    <h1>Document List</h1>
+    <ul>
+        {% for document in documents %}
+            <li><a href="{% url 'view_document' document.id %}">{{ document.name }}</a></li>
+        {% empty %}
+            <li>No documents found.</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'create_document' %}">Create New Document</a></p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compare Versions</title>
+</head>
+<body>
+    <h1>Compare Versions</h1>
+    {% if previous_version %}
+        <h2>Current Version</h2>
+        <p>Created at: {{ current_version }}</p>
+        <pre>{{ current_content }}</pre>
+        <h2>Previous Version</h2>
+        <p>Created at: {{ previous_version }}</p>
+        <pre>{{ previous_content }}</pre>
+    {% else %}
+        <h2>Current Version</h2>
+        <p>Created at: {{ current_version }}</p>
+        <pre>{{ current_content }}</pre>
+        <p>No previous versions available.</p>
+    {% endif %}
+    <p><a href="{% url 'view_document' document.id %}">Back to Document</a></p>
+</body>
+</html>
