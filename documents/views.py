@@ -22,7 +22,7 @@ class CreateDocumentView(View):
         document.current_version = current_version
         document.save()
 
-        return redirect('view_document', document_id=document.id)
+        return redirect('documents:view_document', document_id=document.id)
 
 
 class EditDocumentView(View):
@@ -78,7 +78,7 @@ class DeleteDocumentView(View):
         document = get_object_or_404(Document, id=document_id)
         document.is_deleted = True
         document.save()
-        return redirect('document_list')
+        return redirect('documents:document_list')
 
 
 class CompareVersionsView(View):
