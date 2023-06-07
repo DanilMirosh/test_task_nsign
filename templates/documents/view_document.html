@@ -4,11 +4,11 @@
     <title>View Document</title>
 </head>
 <body>
-    <h1>{{ document.name }}</h1>
+    <h1>Document - {{ document.name }}</h1>
     <p>{{ document.current_version.content }}</p>
-    <p><a href="{% url 'edit_document' document.id %}">Edit</a></p>
-    <p><a href="{% url 'compare_versions' document.id %}">Compare Versions</a></p>
-    <p><a href="{% url 'delete_document' document.id %}">Delete</a></p>
-    <p><a href="{% url 'document_list' %}">Back to Document List</a></p>
+    <p><a href="{% url 'documents:edit_document' document.id %}">Edit</a></p>
+    <p><a href="{% url 'documents:delete_document' document.id %}">Delete</a></p>
+    <p><a href="{% url 'documents:compare_versions' document.id %}">Compare Versions</a></p>
+    <p><a href="{% url 'documents:document_list' %}">Back to List</a></p>
 </body>
 </html>

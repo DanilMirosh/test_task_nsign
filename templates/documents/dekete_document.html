@@ -4,12 +4,12 @@
     <title>Delete Document</title>
 </head>
 <body>
-    <h1>Delete Document</h1>
-    <p>Are you sure you want to delete "{{ document.name }}"?</p>
-    <form method="post">
+    <h1>Delete Document - {{ document.name }}</h1>
+    <p>Are you sure you want to delete this document?</p>
+    <form method="post" action="{% url 'documents:delete_document' document.id %}">
         {% csrf_token %}
         <input type="submit" value="Delete">
     </form>
-    <p><a href="{% url 'view_document' document.id %}">Cancel</a></p>
+    <p><a href="{% url 'documents:view_document' document.id %}">Cancel</a></p>
 </body>
 </html>

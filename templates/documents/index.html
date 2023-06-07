@@ -5,13 +5,15 @@
 </head>
 <body>
     <h1>Document List</h1>
+    {% if documents %}
     <ul>
         {% for document in documents %}
-            <li><a href="{% url 'view_document' document.id %}">{{ document.name }}</a></li>
-        {% empty %}
-            <li>No documents found.</li>
+        <li><a href="{% url 'documents:view_document' document.id %}">{{ document.name }}</a></li>
         {% endfor %}
     </ul>
-    <p><a href="{% url 'create_document' %}">Create New Document</a></p>
+    {% else %}
+    <p>No documents available.</p>
+    {% endif %}
+    <p><a href="{% url 'documents:create_document' %}">Create New Document</a></p>
 </body>
 </html>

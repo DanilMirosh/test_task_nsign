@@ -54,7 +54,7 @@ class EditDocumentView(View):
             document.current_version = current_version
             document.save()
 
-        return redirect('view_document', document_id=document.id)
+        return redirect('documents:view_document', document_id=document.id)
 
 
 class ViewDocumentView(View):
@@ -96,9 +96,15 @@ class CompareVersionsView(View):
                 'previous_version': previous_version.created_at,
                 'current_content': current_version.content,
                 'previous_content': previous_version.content,
+                'document_id': document.id,
             }
         else:
-            context = {'current_version': current_version.created_at, 'previous_version': None}
+            context = {
+                'current_version': current_version.created_at,
+                'previous_version': None,
+                'document_id': document.id}
+
+        context['document_id'] = document_id
 
         return render(request, self.template_name, context)
 

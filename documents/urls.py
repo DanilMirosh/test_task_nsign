@@ -8,6 +8,8 @@ from .views import (
     DocumentListView,
 )
 
+app_name = 'documents'
+
 urlpatterns = [
     path('create/', CreateDocumentView.as_view(), name='create_document'),
     path('edit/<int:document_id>/', EditDocumentView.as_view(), name='edit_document'),

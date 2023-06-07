@@ -4,17 +4,20 @@
     <title>Edit Document</title>
 </head>
 <body>
-    <h1>Edit Document</h1>
+    <h1>Edit Document - {{ document.name }}</h1>
     {% if error %}
-        <p>{{ error }}</p>
+    <p>{{ error }}</p>
     {% endif %}
-    <form method="post">
+    <form method="post" action="{% url 'documents:edit_document' document.id %}">
         {% csrf_token %}
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" value="{{ document.name }}"><br><br>
-        <label for="content">Content:</label><br>
-        <textarea id="content" name="content">{{ current_version.content }}</textarea><br><br>
+        <label for="name">Document Name:</label>
+        <input type="text" id="name" name="name" value="{{ document.name }}" required>
+        <br>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required>{{ current_version.content }}</textarea>
+        <br>
         <input type="submit" value="Save">
     </form>
+    <p><a href="{% url 'documents:view_document' document_id=document.id %}">Cancel</a></p> <!-- Исправленная строка -->
 </body>
 </html>
