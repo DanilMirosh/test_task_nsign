@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+  db:
+    image: python:3.9-alpine
+    command: ["ash", "-c", "while true; do sleep 10000; done"]
